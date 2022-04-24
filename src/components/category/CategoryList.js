@@ -1,6 +1,6 @@
 import React from 'react'
 import Modal from 'react-native-modal'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import { categoryData } from '../../dummy-data/rawData'
 import { COLORS } from '../../styles.js/theme'
 
