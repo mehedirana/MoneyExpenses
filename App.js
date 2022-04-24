@@ -12,7 +12,9 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
+  Text
 } from 'react-native';
+import DrawerNavigation from './src/navigation/drawer-navigation/DrawerNavigation';
 import StackNavigation from './src/navigation/stack-navigation/StackNavigation';
 
 
@@ -23,7 +25,9 @@ const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
-      <StackNavigation />
+      {/* <StackNavigation /> */}
+      <DrawerNavigation/>
+
     </SafeAreaView>
   );
 };
