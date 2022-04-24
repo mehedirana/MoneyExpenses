@@ -1,13 +1,22 @@
-import { View, Text } from 'react-native'
 import React from 'react'
+import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
 
 const HomeScreen =()=> {
   return (
-    <View>
+    <SafeAreaView style={styles.container}>
       <Text>HomeScreen</Text>
-    </View>
+      <Text>HomeScreen</Text>
+      <Text>HomeScreen</Text>
+    </SafeAreaView>
   )
 }
 
 
 export default HomeScreen;
+
+const styles = StyleSheet.create({
+  container:{
+    flex : 1
+  }
+})
+

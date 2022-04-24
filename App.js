@@ -13,24 +13,25 @@ import {
   StatusBar,
   StyleSheet,
 } from 'react-native';
+import StackNavigation from './src/navigation/stack-navigation/StackNavigation';
 
 
 
 
-const App= () => {
+const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
-     
+      <StackNavigation />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-container:{
-  flex:1
-}
+  container: {
+    flex: 1
+  }
 });
 
 export default App;
