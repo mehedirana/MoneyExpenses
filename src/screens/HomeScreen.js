@@ -1,12 +1,19 @@
 import React from 'react'
-import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Dimensions } from 'react-native'
+import { COLORS } from '../styles.js/theme';
 
-const HomeScreen =()=> {
+const {height, width} = Dimensions.get('window')
+
+
+const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>HomeScreen</Text>
-      <Text>HomeScreen</Text>
-      <Text>HomeScreen</Text>
+      <TouchableOpacity style={{ backgroundColor: COLORS.whitePure, flex:1, height: height /2 }}>
+        <Text style={styles.expenseTxt}>Add monthly expense</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={{ backgroundColor: COLORS.whitePure, flex:1,height: height /2 }}>
+        <Text style={styles.expenseTxt}>Add weekly expense</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }
@@ -15,8 +22,16 @@ const HomeScreen =()=> {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  container:{
-    flex : 1
+  container: {
+    flex: 1,
+    flexDirection:'row',
+    marginHorizontal:10
+  },
+  expenseTxt:{
+    textAlign:'center',
+    fontSize:18,
+    fontWeight:"bold",
+    color:COLORS.blackSolid
   }
 })
 
