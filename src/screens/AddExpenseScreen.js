@@ -32,7 +32,7 @@ const AddExpenseScreen = () => {
             dispatch(addToExpense(data))
             setSelectedMonth(null)
             setSelectedCat(null)
-            setAmount(null)
+            setAmount(0)
             console.log(data, getTime);
         }
     }
@@ -75,7 +75,6 @@ const AddExpenseScreen = () => {
 
             <TextInput
                 style={{ borderBottomWidth: 1, marginTop: 10, fontSize:16, color:COLORS.primary, borderColor:COLORS.gray }}
-                
                 keyboardType='numeric'
                 placeholder='Enter yout amount'
                 placeholderTextColor={COLORS.black}
