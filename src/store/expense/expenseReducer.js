@@ -8,8 +8,11 @@ const initialState = {
 export const expenseReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_EXPENSE_LIST:
+            console.log();
             return {
                 ...state,
+                expense:[action.payload, ...state.expense],
+                total: +state.total + +action.payload.expenseAmount
 
             }
         case EDIT_EXPENSE_LIST:

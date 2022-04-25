@@ -5,6 +5,8 @@ import { COLORS } from '../styles.js/theme'
 import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { MonthsList } from '../components/category/MonthsList'
 import uuid from 'react-native-uuid';
+import { useDispatch } from 'react-redux';
+import { addToExpense } from '../store/expense/expenseAction';
 
 const AddExpenseScreen = () => {
     const [isVisible, setIsVisible] = useState(false)
@@ -13,6 +15,8 @@ const AddExpenseScreen = () => {
     const [amount, setAmount] = useState(null)
     const [selectedMonth, setSelectedMonth] = useState(null)
     const [date, setDate] = useState(new Date());
+
+    const dispatch = useDispatch()
 
     const handleSaveExpense =(getTime)=>{
         if(!selectedCat) Alert.alert('Empty Field Error','Category needed')
@@ -24,6 +28,11 @@ const AddExpenseScreen = () => {
             data.expenseId =uuid.v4();
             data.category = selectedCat;
             data.expenseAmount = amount;
+
+            dispatch(addToExpense(data))
+            setSelectedMonth(null)
+            setSelectedCat(null)
+            setAmount(null)
             console.log(data, getTime);
         }
     }
