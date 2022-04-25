@@ -4,6 +4,7 @@ import { CategoryList } from '../components/category/CategoryList'
 import { COLORS } from '../styles.js/theme'
 import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { MonthsList } from '../components/category/MonthsList'
+import uuid from 'react-native-uuid';
 
 const AddExpenseScreen = () => {
     const [isVisible, setIsVisible] = useState(false)
@@ -20,6 +21,7 @@ const AddExpenseScreen = () => {
         else
         {
             const data = {}
+            data.expenseId =uuid.v4();
             data.category = selectedCat;
             data.expenseAmount = amount;
             console.log(data, getTime);

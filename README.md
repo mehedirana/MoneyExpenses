@@ -18,3 +18,4 @@ npm install react-native-reanimated react-native-gesture-handler react-native-sc
 npm install @react-navigation/drawer
 npm i --save react-native-modal
 npm i @react-native-community/datetimepicker
+npm i react-native-uuid
