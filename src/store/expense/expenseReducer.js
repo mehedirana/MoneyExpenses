@@ -21,8 +21,12 @@ export const expenseReducer = (state = initialState, action) => {
 
             }
         case REMOVE_FROM_EXPENSE_LIST:
+            let removeItem = state.expense.filter(
+                (item,i) => item.expenseId === action.payload.expenseId
+            )
             return {
                 ...state,
+                expense: state.expense.filter((item,i)=> item.expenseId !== action.payload.expenseId)
 
             }
 

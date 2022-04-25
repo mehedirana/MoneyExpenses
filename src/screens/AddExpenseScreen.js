@@ -18,22 +18,21 @@ const AddExpenseScreen = () => {
 
     const dispatch = useDispatch()
 
-    const handleSaveExpense =(getTime)=>{
-        if(!selectedCat) Alert.alert('Empty Field Error','Category needed')
-        else if(!amount) Alert.alert('Empty Field Error','Amount needed')
-        else if(!getTime) Alert.alert('Empty Field Error','Time and Date not found')
-        else
-        {
+    const handleSaveExpense = (getTime) => {
+        if (!selectedCat) Alert.alert('Empty Field Error', 'Category needed')
+        else if (!amount) Alert.alert('Empty Field Error', 'Amount needed')
+        else if (!getTime) Alert.alert('Empty Field Error', 'Time and Date not found')
+        else {
             const data = {}
-            data.expenseId =uuid.v4();
+            data.expenseId = uuid.v4();
             data.category = selectedCat;
             data.expenseAmount = amount;
-
-            dispatch(addToExpense(data))
+            data.time = getTime
+            if (data != {}) dispatch(addToExpense(data))
             setSelectedMonth(null)
             setSelectedCat(null)
             setAmount(0)
-            console.log(data, getTime);
+            // console.log(data);
         }
     }
 
@@ -74,7 +73,7 @@ const AddExpenseScreen = () => {
             </TouchableOpacity>
 
             <TextInput
-                style={{ borderBottomWidth: 1, marginTop: 10, fontSize:16, color:COLORS.primary, borderColor:COLORS.gray }}
+                style={{ borderBottomWidth: 1, marginTop: 10, fontSize: 16, color: COLORS.primary, borderColor: COLORS.gray }}
                 keyboardType='numeric'
                 placeholder='Enter yout amount'
                 placeholderTextColor={COLORS.black}
@@ -92,8 +91,8 @@ const AddExpenseScreen = () => {
             </TouchableOpacity>
             <Text style={styles.catTxt}>Selected Time and Date: {date.toLocaleString()}</Text>
 
-            <TouchableOpacity style={{backgroundColor:COLORS.primary, borderRadius:9, marginTop:50}} onPress={()=> handleSaveExpense(date.toLocaleString())}>
-              <Text style={{color:COLORS.whitePure, paddingVertical:10, textAlign:'center',fontSize:22}}>Save Expense</Text>
+            <TouchableOpacity style={{ backgroundColor: COLORS.primary, borderRadius: 9, marginTop: 50 }} onPress={() => handleSaveExpense(date.toLocaleString())}>
+                <Text style={{ color: COLORS.whitePure, paddingVertical: 10, textAlign: 'center', fontSize: 22 }}>Save Expense</Text>
             </TouchableOpacity>
 
         </View>
@@ -109,9 +108,9 @@ const styles = StyleSheet.create({
     catTxt: {
         fontSize: 16,
         borderBottomWidth: 1,
-        borderColor:COLORS.gray,
+        borderColor: COLORS.gray,
         color: COLORS.primary,
         marginTop: 20,
-        paddingBottom:5
+        paddingBottom: 5
     }
 })
