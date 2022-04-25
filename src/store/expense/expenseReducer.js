@@ -28,5 +28,8 @@ export const expenseReducer = (state = initialState, action) => {
                 ...state,
 
             }
+        default:
+            return state;
     }
+
 }

@@ -17,11 +17,7 @@ import {
 import DrawerNavigation from './src/navigation/drawer-navigation/DrawerNavigation';
 import StackNavigation from './src/navigation/stack-navigation/StackNavigation';
 
-
-
-
 const App = () => {
-
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={'dark-content'} />
