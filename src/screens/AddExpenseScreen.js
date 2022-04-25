@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import { TextInput } from 'react-native-gesture-handler'
+import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
 import { CategoryList } from '../components/category/CategoryList'
 import { COLORS } from '../styles.js/theme'
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import { MonthsList } from '../components/category/MonthsList'
 
 const AddExpenseScreen = () => {
@@ -11,6 +10,29 @@ const AddExpenseScreen = () => {
     const [visibleMonths, setVisibleMonths] = useState(false)
     const [selectedCat, setSelectedCat] = useState(null)
     const [selectedMonth, setSelectedMonth] = useState(null)
+    const [date, setDate] = useState(new Date());
+
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate;
+        setDate(currentDate);
+    };
+
+    const showMode = (currentMode) => {
+        DateTimePickerAndroid.open({
+            value: date,
+            onChange,
+            mode: currentMode,
+            is24Hour: true
+        })
+    };
+
+    const showDatepicker = () => {
+        showMode('date');
+    };
+
+    const showTimepicker = () => {
+        showMode('time');
+    };
 
     const childToParent = (data) => {
         setSelectedCat(data)
@@ -27,17 +49,24 @@ const AddExpenseScreen = () => {
             </TouchableOpacity>
 
             <TextInput
-                style={{ borderBottomWidth: 1, marginTop: 10 }}
+                style={{ borderBottomWidth: 1, marginTop: 10, fontSize:16 }}
+                
                 keyboardType='numeric'
                 placeholder='Enter yout amount'
                 placeholderTextColor={COLORS.black}
                 onChangeText={(e) => { console.log(e) }}
             />
-            <TouchableOpacity onPress={() => setVisibleMonths(true)}>
+            {/* <TouchableOpacity onPress={() => setVisibleMonths(true)}>
                 <Text style={styles.catTxt}>{selectedMonth ? selectedMonth?.name : 'Select a Month'} </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
-       
+            <TouchableOpacity onPress={showDatepicker}>
+                <Text style={styles.catTxt}>Select Date!</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={showTimepicker}>
+                <Text style={styles.catTxt}>Select time!</Text>
+            </TouchableOpacity>
+            <Text style={styles.catTxt}>Selected Time and Date: {date.toLocaleString()}</Text>
 
         </View>
     )
@@ -53,7 +82,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         borderBottomWidth: 1,
 
-        color: COLORS.black,
+        color: COLORS.primary,
         marginTop: 20
     }
 })
